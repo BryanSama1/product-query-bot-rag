@@ -1,0 +1,36 @@
+# Archivos y directorios a ignorar en Docker build
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.pytest_cache/
+.coverage
+htmlcov/
+
+# Entornos virtuales
+venv/
+env/
+.venv/
+
+# IDEs
+.vscode/
+.idea/
+
+# Git
+.git/
+.gitignore
+
+# Docker
+Dockerfile
+.dockerignore
+docker-compose.yml
+
+# Documentación
+*.md
+docs/
+
+# Tests (opcional - incluirlos si quieres testing en producción)
+# tests/
+
+# Archivos de desarrollo
+demo.py

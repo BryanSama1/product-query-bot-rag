@@ -1,0 +1,26 @@
+version: '3.8'
+
+services:
+  product-query-bot:
+    build: .
+    ports:
+      - "8000:8000"
+    environment:
+      - GOOGLE_API_KEY=${GOOGLE_API_KEY}
+    volumes:
+      - ./data:/app/data
+      - ./faiss_index:/app/faiss_index
+    command: sh -c "python index.py && uvicorn app:app --host 0.0.0.0 --port 8000"
+    
+  # Servicio opcional para desarrollo con hot reload
+  product-query-bot-dev:
+    build: .
+    ports:
+      - "8001:8000"
+    environment:
+      - GOOGLE_API_KEY=${GOOGLE_API_KEY}
+    volumes:
+      - .:/app
+    command: sh -c "python index.py && uvicorn app:app --host 0.0.0.0 --port 8000 --reload"
+    profiles:
+      - dev
